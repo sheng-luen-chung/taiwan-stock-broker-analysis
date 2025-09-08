@@ -52,8 +52,12 @@ env.bak/
 venv.bak/
 
 # VS Code
-.vscode/
 *.code-workspace
+
+.vscode/*
+!.vscode/
+!.vscode/settings.json
+
 
 # Jupyter Notebook
 .ipynb_checkpoints
