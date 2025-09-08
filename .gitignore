@@ -1,35 +1,39 @@
-# Python
+# ===================================
+# Python 基本檔案 / 編譯產物
+# ===================================
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
 *.egg-info/
-.installed.cfg
 *.egg
-MANIFEST
-
-# PyInstaller
+.eggs/
+*.pyo
+*.pyd
+*.dll
 *.manifest
 *.spec
+MANIFEST
 
-# Installer logs
+# Build / 發佈相關
+build/
+dist/
+downloads/
+wheels/
+sdist/
+develop-eggs/
+parts/
+var/
+lib/
+lib64/
+.installed.cfg
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Unit test / coverage reports
+# ===================================
+# 測試 / 覆蓋率報告
+# ===================================
 htmlcov/
 .tox/
 .nox/
@@ -42,45 +46,51 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 
-# Virtual environments
-.env
-.venv
+# ===================================
+# 虛擬環境 (跨電腦必須重建，不要進版控)
+# ===================================
+.venv/
 env/
 venv/
 ENV/
-env.bak/
+.env
+.env.bak/
 venv.bak/
+ENV.bak/
 
-# VS Code
+# ===================================
+# VS Code 設定
+# 保留 settings.json，其餘忽略
+# ===================================
 *.code-workspace
-
 .vscode/*
-!.vscode/
 !.vscode/settings.json
 
-
+# ===================================
 # Jupyter Notebook
-.ipynb_checkpoints
+# ===================================
+.ipynb_checkpoints/
 
 # pyenv
 .python-version
 
-# Environments
-.env
-.ENV
-
-# CSV 輸出檔案（排除爬取的資料檔案）
+# ===================================
+# 專案輸出檔案
+# ===================================
+# 爬蟲原始資料
 *_爬蟲資料_*.csv
+# 清理/處理後資料
 *_處理後資料_*.csv
-
-# 分析輸出結果
+# 分析結果
 output/
-*.zip
-
 # 測試檔案
 測試_*.csv
+# 打包檔
+*.zip
 
-# 臨時檔案
+# ===================================
+# 臨時檔案 / 系統檔案
+# ===================================
 *.tmp
 *.temp
 .DS_Store

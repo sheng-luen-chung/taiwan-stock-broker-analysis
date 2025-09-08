@@ -1,5 +1,6 @@
 @echo off
 chcp 65001 >nul
+
 echo ====================================
 echo   台灣證券交易所券商進出明細爬蟲工具
 echo ====================================
@@ -27,7 +28,8 @@ echo.
 echo 開始下載股票代碼 %stock_code% 的券商進出明細...
 echo.
 
-python stock_scraper.py %stock_code%
+REM --- 強制使用 venv 裡的 Python ---
+".venv\Scripts\python.exe" stock_scraper.py %stock_code%
 
 echo.
 echo 按任意鍵關閉視窗...

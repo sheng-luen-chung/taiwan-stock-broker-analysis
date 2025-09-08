@@ -1,25 +1,22 @@
-# 台灣證券交易所券商進出明細爬蟲工具
-# Requirements.txt - 套件相依性清單
-# 
-# 安裝指令: pip install -r requirements.txt
-# 
-# 注意: 建議按照 INSTALL.md 中的步驟安裝，避免版本衝突
+# Taiwan Stock Broker Analysis - Python dependencies
+# Install with: pip install -r requirements.txt
+# For detailed usage, see INSTALL.md
 
-# === 核心相依套件 (指定版本避免衝突) ===
+# === Core dependencies (pinned versions for stability) ===
 numpy==1.24.4
 onnxruntime==1.16.3
 opencv-python-headless==4.8.1.78
 pillow==10.0.1
 
-# === OCR 驗證碼識別套件 ===
+# === OCR library ===
 ddddocr==1.4.11
 
-# === 網路爬蟲套件 ===
+# === Web scraping ===
 requests>=2.28.0
 beautifulsoup4>=4.11.0
 lxml>=4.9.0
 
-# === 可選套件 (用於資料分析) ===
-# pandas>=1.5.0
-# matplotlib>=3.6.0
-# openpyxl>=3.0.0
+# === Optional: data analysis ===
+pandas>=1.5.0
+matplotlib>=3.6.0
+openpyxl>=3.0.0

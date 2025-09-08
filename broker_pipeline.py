@@ -356,10 +356,11 @@ def run_pipeline(input_csv: Path, outdir: Path, fee_discount: float, day_trade_t
 
 def parse_args():
     p = argparse.ArgumentParser(description="券商分點資料處理與 FIFO 撮合全流程")
-    p.add_argument("--input", type=str, default="2317_處理後資料_20250907_110152.csv")
-    p.add_argument("--outdir", type=str, default="output")
-    p.add_argument("--fee_discount", type=float, default=0.28)
-    p.add_argument("--day_trade_tax", type=float, default=0.0015)
+    # 改成必填的位置參數，不要 default
+    p.add_argument("input", type=str, help="輸入的 CSV 檔案路徑")
+    p.add_argument("--outdir", type=str, default="output", help="輸出資料夾")
+    p.add_argument("--fee_discount", type=float, default=0.28, help="手續費折扣 (預設 0.28)")
+    p.add_argument("--day_trade_tax", type=float, default=0.0015, help="當沖交易稅率 (預設 0.0015)")
     return p.parse_args()
 
 if __name__ == "__main__":
