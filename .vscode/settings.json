@@ -1,11 +1,14 @@
 {
   // 讓 VS Code 一開專案就用本專案的 venv
   "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+
   // 在 VS Code 內建終端機自動啟用 venv
   "python.terminal.activateEnvironment": true,
 
-  // Jupyter：用同一個 venv 當 Kernel（必要時會自動安裝 ipykernel）
+  // 確保 Jupyter 也用 venv（避免跑到全域 Python）
   "jupyter.askForKernelRestart": false,
+  "jupyter.kernelPicker.type": "onlySuggested", 
+  "jupyter.kernels.exclude": [ "Python 3" ],
 
   // 格式與檔案習慣（可選）
   "files.eol": "\n",
