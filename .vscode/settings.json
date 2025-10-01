@@ -1,22 +1,20 @@
 {
-  // 讓 VS Code 一開專案就用本專案的 venv
-  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
-
-  // 在 VS Code 內建終端機自動啟用 venv
+  // 釘死 VS Code 用的解譯器
+  "python.defaultInterpreterPath": "H:\\venvs\\taiwan-stock-broker-analysis-py312\\Scripts\\python.exe",
+  "python.venvPath": "H:\\venvs",
   "python.terminal.activateEnvironment": true,
+  "python.condaAutoActivateEnvironment": false,
 
-  // 確保 Jupyter 也用 venv（避免跑到全域 Python）
-  "jupyter.askForKernelRestart": false,
-  "jupyter.kernelPicker.type": "onlySuggested", 
-  "jupyter.kernels.exclude": [ "Python 3" ],
+  // 讓新開的 VS Code 終端機，不啟動 profile、不讀 conda hook
+  "terminal.integrated.profiles.windows": {
+    "PowerShell (NoProfile)": { "source": "PowerShell", "args": ["-NoProfile"] }
+  },
+  "terminal.integrated.defaultProfile.windows": "PowerShell (NoProfile)",
 
-  // 格式與檔案習慣（可選）
-  "files.eol": "\n",
-  "files.encoding": "utf8",
-  "editor.tabSize": 2,
-  "editor.insertSpaces": true,
-
-  // 測試（若你用 pytest；可先留著）
-  "python.testing.pytestEnabled": true,
-  "python.testing.unittestEnabled": false
+  // 關鍵：把 venv\Scripts 放到 PATH 最前面，
+  // 這樣就算沒啟用 venv，打 `python` 一樣會用到 H:\venvs\...\python.exe
+  "terminal.integrated.env.windows": {
+    "VIRTUAL_ENV": "H:\\venvs\\taiwan-stock-broker-analysis-py312",
+    "PATH": "H:\\venvs\\taiwan-stock-broker-analysis-py312\\Scripts;${env:PATH}"
+  }
 }

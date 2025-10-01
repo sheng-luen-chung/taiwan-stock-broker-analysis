@@ -1,15 +1,9 @@
-
----
-
-## ✅ 更新後的 requirements.txt
-
-```txt
 # Taiwan Stock Broker Analysis - Python dependencies
-# 安裝方式: pip install -r requirements.txt
+# 安�??��?: pip install -r requirements.txt
 
 # === Core dependencies ===
-numpy==1.24.4
-onnxruntime==1.16.3
+numpy>=1.26.0,<2.0
+onnxruntime==1.22.1
 opencv-python-headless==4.8.1.78
 pillow==10.0.1
 
@@ -21,7 +15,7 @@ requests>=2.28.0
 beautifulsoup4>=4.11.0
 lxml>=4.9.0
 
-# === Data analysis ===
-pandas>=1.5.0
-openpyxl>=3.0.0
-matplotlib>=3.6.0
+# === Data analysis (Windows + Python 3.13 friendly) ===
+pandas==2.2.2
+openpyxl==3.1.2
+matplotlib==3.7.5
