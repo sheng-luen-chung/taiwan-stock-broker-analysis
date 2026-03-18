@@ -8,93 +8,36 @@
 import os
 import re
 import sys
-import requests
-from datetime import datetime
-from bs4 import BeautifulSoup
 import ddddocr  # type: ignore
+
+from broker_scraper_core import download_csv_text, save_raw_csv
 
 def download_stock_csv(stock_code):
     """下載股票券商進出明細 CSV"""
     print(f"🔍 開始下載股票 {stock_code} 的券商進出明細...")
-    
-    # 初始化
+
     ocr = ddddocr.DdddOcr()
-    base_url = 'https://bsr.twse.com.tw/bshtm/bsMenu.aspx'
-    
-    # 最多重試 5 次
-    for attempt in range(5):
-        try:
-            print(f"  第 {attempt + 1} 次嘗試...")
-            
-            # 建立 session
-            session = requests.Session()
-            
-            # 取得頁面
-            resp = session.get(base_url, verify=False)
-            if resp.status_code != 200:
-                continue
-                
-            # 解析表單
-            soup = BeautifulSoup(resp.text, 'lxml')
-            params = {}
-            
-            for node in soup.select('input'):
-                name = node.attrs.get('name', '')
-                if name in ('RadioButton_Excd', 'Button_Reset'):
-                    continue
-                params[name] = node.attrs.get('value', '')
-            
-            # 下載驗證碼
-            captcha_img = soup.select('#Panel_bshtm img')[0]['src']
-            guid = re.search(r'guid=(.+)', captcha_img).group(1)
-            
-            img_url = f'https://bsr.twse.com.tw/bshtm/{captcha_img}'
-            img_resp = requests.get(img_url, verify=False)
-            
-            # OCR 識別
-            vcode = ocr.classification(img_resp.content)
-            print(f"  驗證碼: {vcode}")
-            
-            # 設定參數
-            params['CaptchaControl1'] = vcode
-            params['TextBox_Stkno'] = stock_code
-            
-            # 提交表單
-            resp = session.post(base_url, data=params)
-            if resp.status_code != 200:
-                continue
-            
-            # 找下載連結
-            soup = BeautifulSoup(resp.text, 'lxml')
-            download_links = soup.select('#HyperLink_DownloadCSV')
-            
-            if not download_links:
-                print("  驗證碼錯誤，重試中...")
-                continue
-            
-            # 下載 CSV
-            csv_url = f'https://bsr.twse.com.tw/bshtm/{download_links[0]["href"]}'
-            csv_resp = session.get(csv_url)
-            
-            # 儲存檔案
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            filename = f"{stock_code}_券商明細_{timestamp}.csv"
-            
-            with open(filename, 'w', encoding='utf-8') as f:
-                f.write(csv_resp.text)
-            
-            print(f"✅ 下載成功！")
-            print(f"📄 檔案: {filename}")
-            print(f"📂 位置: {os.path.abspath(filename)}")
-            
-            return filename
-            
-        except Exception as e:
-            print(f"  錯誤: {e}")
-            continue
-    
-    print("❌ 所有嘗試均失敗")
-    return None
+
+    def solve_captcha(image_bytes):
+        captcha_code = ocr.classification(image_bytes)
+        print(f"  驗證碼: {captcha_code}")
+        return captcha_code
+
+    success, csv_text, _ = download_csv_text(
+        stock_code,
+        solve_captcha,
+        max_retries=5,
+        logger=lambda message: print(f"  {message}"),
+    )
+    if not success:
+        print("❌ 所有嘗試均失敗")
+        return None
+
+    filename = save_raw_csv(csv_text, stock_code, label="券商明細", encoding="utf-8")
+    print(f"✅ 下載成功！")
+    print(f"📄 檔案: {filename}")
+    print(f"📂 位置: {os.path.abspath(filename)}")
+    return filename
 
 def main():
     """主程式"""
