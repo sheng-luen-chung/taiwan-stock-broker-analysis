@@ -1,0 +1,21 @@
+﻿# --- Core ---
+numpy==1.26.4
+onnxruntime==1.22.1
+opencv-python-headless>=4.10.0.84
+pillow>=10.3.0
+
+# --- OCR ---
+ddddocr==1.5.6
+
+# --- Web scraping ---
+requests>=2.28.0
+beautifulsoup4>=4.11.0
+lxml>=5.2.1
+
+# --- Data analysis ---
+pandas==2.2.2
+openpyxl==3.1.2
+
+# --- Utilities ---
+python-dateutil>=2.8.2
+tqdm>=4.66.0
