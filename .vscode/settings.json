@@ -3,19 +3,17 @@
   "python.defaultInterpreterPath": "H:\\venvs\\taiwan-stock-broker-analysis-py312\\Scripts\\python.exe",
   "python.venvPath": "H:\\venvs",
   "python.terminal.activateEnvironment": true,
-<<<<<<< HEAD
-  "python.analysis.extraPaths": [
-    "${workspaceFolder}/src"
-  ],
-=======
-  "python.condaAutoActivateEnvironment": false,
->>>>>>> e001a98ba4df8af182e10c020ca6e2928ff849d3
 
-  // 讓新開的 VS Code 終端機，不啟動 profile、不讀 conda hook
-  "terminal.integrated.profiles.windows": {
-    "PowerShell (NoProfile)": { "source": "PowerShell", "args": ["-NoProfile"] }
-  },
-  "terminal.integrated.defaultProfile.windows": "PowerShell (NoProfile)",
+  // 確保 Jupyter 也用 venv（避免跑到全域 Python）
+  "jupyter.askForKernelRestart": false,
+  "jupyter.kernelPicker.type": "onlySuggested", 
+  "jupyter.kernels.exclude": [ "Python 3" ],
+
+  // 格式與檔案習慣（可選）
+  "files.eol": "\n",
+  "files.encoding": "utf8",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
 
   // 關鍵：把 venv\Scripts 放到 PATH 最前面，
   // 這樣就算沒啟用 venv，打 `python` 一樣會用到 H:\venvs\...\python.exe
