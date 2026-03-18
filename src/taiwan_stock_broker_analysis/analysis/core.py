@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
-from _workspace_bootstrap import ensure_src_on_path
 
-ensure_src_on_path()
-
-from taiwan_stock_broker_analysis.analysis.core import (  # noqa: E402
+from ..domain.analysis import (
     BRANCH_RE,
     BRANCH_TOKENS,
     FEE_RATE_STD,

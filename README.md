@@ -15,6 +15,15 @@
   - 淨買賣超分析
 - 📂 **自動整理**：每次分析結果會放在 `output/analysis_<檔名>` 底下
 
+## 程式結構
+
+- `src/taiwan_stock_broker_analysis/analysis/core.py`: 分析核心
+- `src/taiwan_stock_broker_analysis/scraping/core.py`: 下載核心
+- `src/taiwan_stock_broker_analysis/pipeline.py`: 一鍵流程編排
+- 根目錄 `run_pipeline.py`、`broker_pipeline.py`、`stock_scraper.py`、`stock_scraper_manual.py`、`simple_downloader.py`: CLI 入口
+
+更完整的模組關係請看 `ARCHITECTURE.md`
+
 ---
 
 ## 安裝需求
@@ -88,3 +97,13 @@ python run_pipeline.py <股票代碼> [--retries N] [--outdir output] [--fee-dis
 * 僅限學術研究與個人使用
 * 請避免過度頻繁請求，建議每次下載間隔 ≥ 10 秒
 * 收盤後（14:30 以後）數據最完整
+
+---
+
+## 開發驗證
+
+目前有一組最小分析核心測試，可用以下指令執行：
+
+```bash
+python -m unittest tests.test_analysis_core -v
+```

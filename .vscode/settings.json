@@ -4,6 +4,9 @@
 
   // 在 VS Code 內建終端機自動啟用 venv
   "python.terminal.activateEnvironment": true,
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}/src"
+  ],
 
   // 確保 Jupyter 也用 venv（避免跑到全域 Python）
   "jupyter.askForKernelRestart": false,
