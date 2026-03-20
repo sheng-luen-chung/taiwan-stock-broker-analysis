@@ -15,10 +15,5 @@
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
 
-  // 關鍵：把 venv\Scripts 放到 PATH 最前面，
-  // 這樣就算沒啟用 venv，打 `python` 一樣會用到 H:\venvs\...\python.exe
-  "terminal.integrated.env.windows": {
-    "VIRTUAL_ENV": "H:\\venvs\\taiwan-stock-broker-analysis-py312",
-    "PATH": "H:\\venvs\\taiwan-stock-broker-analysis-py312\\Scripts;${env:PATH}"
-  }
+  // 建議不要手動設 PATH，讓 VS Code 自動偵測 .venv
 }
