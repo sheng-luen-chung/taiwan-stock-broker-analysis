@@ -1,7 +1,7 @@
 {
   // 釘死 VS Code 用的解譯器
-  "python.defaultInterpreterPath": "H:\\venvs\\taiwan-stock-broker-analysis-py312\\Scripts\\python.exe",
-  "python.venvPath": "H:\\venvs",
+  // "python.defaultInterpreterPath": ".venv\\Scripts\\python.exe", // 建議註解掉，讓 VS Code 自動偵測
+  // "python.venvPath": "H:/venvs", // 建議註解掉，讓 VS Code 自動偵測
   "python.terminal.activateEnvironment": true,
 
   // 確保 Jupyter 也用 venv（避免跑到全域 Python）
