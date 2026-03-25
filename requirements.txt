@@ -1,24 +1,13 @@
-# Taiwan Stock Broker Analysis - Python dependencies
-# 建議使用 Python 3.10 或 3.11
-
-# === 基本科學運算 ===
 numpy==2.4.3
 pandas==3.0.1
 openpyxl==3.1.5
 lxml==6.0.2
-# matplotlib  # 如有需要再加
-
-# === 影像處理/機器學習 ===
 onnxruntime==1.24.4
 opencv-python==4.13.0.92
 pillow==12.1.1
 flatbuffers==25.12.19
 protobuf==7.34.1
-
-# === OCR ===
 ddddocr==1.6.1
-
-# === 爬蟲/網路 ===
 requests==2.32.5
 beautifulsoup4==4.14.3
 soupsieve==2.8.3
@@ -26,8 +15,6 @@ certifi==2026.2.25
 charset-normalizer==3.4.6
 idna==3.11
 urllib3==2.6.3
-
-# === 其他依賴 ===
 setuptools==82.0.1
 wheel==0.46.3
 packaging==26.0

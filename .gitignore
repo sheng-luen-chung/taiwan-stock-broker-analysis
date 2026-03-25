@@ -84,6 +84,8 @@ ENV.bak/
 *_處理後資料_*.csv
 # 分析結果
 output/
+output_refactor_verify_latest/
+.refactor_backup/
 # 測試檔案
 測試_*.csv
 # 打包檔
