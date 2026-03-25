@@ -1,27 +1,40 @@
-# -*- coding: utf-8 -*-
 # Taiwan Stock Broker Analysis - Python dependencies
-# 安�??��?: pip install -r requirements.txt
+# 建議使用 Python 3.10 或 3.11
 
-# === Core dependencies ===
-# Core dependencies (fixed versions to avoid conflicts)
-numpy==1.24.4
-onnxruntime==1.16.3
-opencv-python-headless==4.8.1.78
-pillow==10.0.1
+# === 基本科學運算 ===
+numpy==2.4.3
+pandas==3.0.1
+openpyxl==3.1.5
+lxml==6.0.2
+# matplotlib  # 如有需要再加
 
-# === OCR library ===
-ddddocr>=1.5.6
+# === 影像處理/機器學習 ===
+onnxruntime==1.24.4
+opencv-python==4.13.0.92
+pillow==12.1.1
+flatbuffers==25.12.19
+protobuf==7.34.1
 
-# === Web scraping ===
-# Web scraping
-requests>=2.28.0
-beautifulsoup4>=4.11.0
-lxml>=4.9.0
+# === OCR ===
+ddddocr==1.6.1
 
-# === Data analysis (Windows + Python 3.13 friendly) ===
-pandas==2.2.2
-openpyxl==3.1.2
-matplotlib==3.7.5
-pandas==2.2.2
-openpyxl==3.1.2
-matplotlib==3.7.5
+# === 爬蟲/網路 ===
+requests==2.32.5
+beautifulsoup4==4.14.3
+soupsieve==2.8.3
+certifi==2026.2.25
+charset-normalizer==3.4.6
+idna==3.11
+urllib3==2.6.3
+
+# === 其他依賴 ===
+setuptools==82.0.1
+wheel==0.46.3
+packaging==26.0
+python-dateutil==2.9.0.post0
+typing_extensions==4.15.0
+tzdata==2025.3
+six==1.17.0
+mpmath==1.3.0
+sympy==1.14.0
+et_xmlfile==2.0.0
