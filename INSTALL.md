@@ -1,3 +1,45 @@
+---
+
+# 🏁 跨平台一鍵安裝/啟動環境（推薦）
+
+## Windows (PowerShell)
+1. 開啟 PowerShell，切換到專案資料夾：
+   ```powershell
+   cd <你的專案路徑>
+   ```
+2. 執行安裝腳本：
+   ```powershell
+   ./setup_venv.ps1
+   ```
+   - 若要指定 Python 版本（如 3.12）：
+     ```powershell
+     ./setup_venv.ps1 -PyVersion 3.12
+     ```
+
+## macOS/Linux
+1. 開啟 Terminal，切換到專案資料夾：
+   ```bash
+   cd <你的專案路徑>
+   ```
+2. 建立虛擬環境並安裝套件：
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   pip install -U pip setuptools wheel
+   pip install -r requirements.txt
+   ```
+
+## 啟動虛擬環境
+- Windows: `.venv\Scripts\Activate.ps1`
+- macOS/Linux: `source .venv/bin/activate`
+
+## 注意事項
+- **不要** 把 `.venv` 目錄加入 git，已在 `.gitignore` 排除。
+- VS Code 會自動偵測 `.venv`，不需手動設定 python 路徑。
+- 若 requirements.txt 有更新，請重新執行 `pip install -r requirements.txt`。
+
+---
+
 # 📈 台灣證券交易所券商進出明細爬蟲工具 - 安裝指南
 
 > 🚀 自動下載股票券商買賣明細，支援 OCR 驗證碼識別，UTF-8 編碼完美支援 Excel

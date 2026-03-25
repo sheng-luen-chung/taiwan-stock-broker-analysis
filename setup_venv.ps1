@@ -14,27 +14,26 @@ param(
   [string]$PyVersion = "3.11"
 )
 
-Write-Host ">> 建立 Python $PyVersion 的虛擬環境..." -ForegroundColor Cyan
+Write-Host ">> Creating Python $PyVersion virtual environment..." -ForegroundColor Cyan
 
 # 建立 .venv
 py -$PyVersion -m venv .venv
 if (-not $?) {
-  throw "找不到 Python $PyVersion，請先安裝它（或用 'setup_venv.ps1 -PyVersion 3.12' 指定版本）"
+  throw "Python $PyVersion not found. Please install it first (or use 'setup_venv.ps1 -PyVersion 3.12' to specify version)."
 }
 
 # 啟用虛擬環境
-Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
 .\.venv\Scripts\Activate.ps1
 
-Write-Host ">> 升級 pip / setuptools / wheel..." -ForegroundColor Cyan
+Write-Host ">> Upgrading pip / setuptools / wheel..." -ForegroundColor Cyan
 python -m pip install -U pip setuptools wheel
 
-Write-Host ">> 安裝 requirements.txt 套件..." -ForegroundColor Cyan
+Write-Host ">> Installing requirements.txt packages..." -ForegroundColor Cyan
 if (Test-Path requirements.txt) {
   pip install -r requirements.txt
 } else {
-  Write-Host "⚠️ 專案中沒有 requirements.txt，請自行安裝所需套件。" -ForegroundColor Yellow
+  Write-Host "[Warning] requirements.txt not found. Please install required packages manually." -ForegroundColor Yellow
 }
 
-Write-Host ">> 完成！目前使用的 Python 解譯器：" -ForegroundColor Green
+Write-Host ">> Done! Current Python interpreter:" -ForegroundColor Green
 python -c "import sys; print(sys.executable)"
